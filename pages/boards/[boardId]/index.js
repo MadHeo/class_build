@@ -1,11 +1,19 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function BoardsPage() {
+  const [count, setCount] = useState(0);
   const router = useRouter();
+
+  const onClickCount = () => {
+    setCount((prev) => prev + 1);
+  };
   return (
     <>
       <div>안녕하세요 게시판 상세 동적페이지 입니다.</div>
       <div>게시글 아이디: {router.query.boardId}</div>
+      <button onClick={onClickCount}>더하기</button>
+      <div>{count}</div>
     </>
   );
 }
